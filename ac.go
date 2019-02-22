@@ -1,4 +1,4 @@
-package goAcAutomachine
+package goAcAutoMachine
 
 type AcNode struct {
 	fail      *AcNode
@@ -23,12 +23,6 @@ func NewAcAutoMachine() *AcAutoMachine {
 		root: newAcNode(),
 	}
 }
-
-/*
-type QueryResult struct {
-	Start, End int
-}
-*/
 
 func (ac *AcAutoMachine) AddPattern(pattern string) {
 	chars := []rune(pattern)
@@ -70,7 +64,6 @@ func (ac *AcAutoMachine) Build() {
 	}
 }
 
-//func (ac *AcAutoMachine) Query(content string) (results []QueryResult) {
 func (ac *AcAutoMachine) Query(content string) (results []string) {
 	chars := []rune(content)
 	iter := ac.root
@@ -87,8 +80,7 @@ func (ac *AcAutoMachine) Query(content string) (results []string) {
 			iter = iter.next[c]
 			if iter.isPattern {
 				end = i // this is the end match, record one result
-				//results = append(results, QueryResult{start, end})
-				results = append(results, string([]rune(content)[start:end]))
+				results = append(results, string([]rune(content)[start:end+1]))
 			}
 		}
 	}

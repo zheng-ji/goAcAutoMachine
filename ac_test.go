@@ -1,8 +1,7 @@
-package goAcAutomachine
+package goAcAutoMachine
 
 import (
 	"fmt"
-	"github.com/zheng-ji/acautomachine"
 	"testing"
 )
 
@@ -16,7 +15,6 @@ func TestAc(t *testing.T) {
 	results := ac.Query(content)
 	fmt.Println("内容: " + content)
 	for _, result := range results {
-		//fmt.Println(string([]rune(content)[result.Start : result.End+1]))
 		fmt.Println(result)
 	}
 }

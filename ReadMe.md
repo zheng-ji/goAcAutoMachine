@@ -1,12 +1,15 @@
-
 ## goAcAutoMachine
 
-Go 实现多模式字符串配置的 AC 自动机
+[![Build Status](https://travis-ci.org/zheng-ji/goAuAutoMachine.svg)](https://travis-ci.org/zheng-ji/goAuAutoMachine)
+[![GoDoc](https://godoc.org/github.com/zheng-ji/goAuAutoMachine?status.svg)](https://godoc.org/github.com/zheng-ji/goAuAutoMachine)
+
+
+Go 实现多模式字符串匹配的 AC 自动机
 
 ### Install
 
 ```
-go get "github.com/zheng-ji/goAcAutomachine"
+go get "github.com/zheng-ji/goAcAutoMachine"
 ```
 
 ### Example
@@ -16,7 +19,7 @@ package main
 
 import (
     "fmt"
-    "github.com/zheng-ji/goAcAutomachine"
+    "github.com/zheng-ji/goAcAutoMachine"
 )
 
 func main() {
@@ -26,7 +29,7 @@ func main() {
     ac.AddPattern("祖国")
     ac.AddPattern("花朵")
     ac.Build()
-    results := ac.Scan(content)
+    results := ac.QUery(content)
     fmt.Println("内容: " + content)
     for _, result := range results {
 		fmt.Println(result)
