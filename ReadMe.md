@@ -1,7 +1,7 @@
 ## goAcAutoMachine
 
-[![Build Status](https://travis-ci.org/zheng-ji/goAuAutoMachine.svg)](https://travis-ci.org/zheng-ji/goAuAutoMachine)
-[![GoDoc](https://godoc.org/github.com/zheng-ji/goAuAutoMachine?status.svg)](https://godoc.org/github.com/zheng-ji/goAuAutoMachine)
+[![Build Status](https://travis-ci.org/zheng-ji/goAcAutoMachine.svg)](https://travis-ci.org/zheng-ji/goAcAutoMachine)
+[![GoDoc](https://godoc.org/github.com/zheng-ji/goAcAutoMachine?status.svg)](https://godoc.org/github.com/zheng-ji/goAcAutoMachine)
 
 
 Go 实现多模式字符串匹配的 AC 自动机
