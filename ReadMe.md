@@ -30,7 +30,7 @@ func main() {
     ac.Build()
 
     content := "我是红领巾，祖国未来的花朵"
-    results := ac.QUery(content)
+    results := ac.Query(content)
     for _, result := range results {
         fmt.Println(result)
     }
