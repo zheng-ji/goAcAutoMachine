@@ -50,7 +50,7 @@ func (ac *AcAutoMachine) Build() {
 				failAcNode := parent.fail
 				for failAcNode != nil {
 					if _, ok := failAcNode.next[char]; ok {
-						child.fail = parent.fail.next[char]
+						child.fail = failAcNode.next[char]
 						break
 					}
 					failAcNode = failAcNode.fail
