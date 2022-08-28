@@ -18,6 +18,12 @@ type AcAutoMachine struct {
 	root *AcNode
 }
 
+type Result struct {
+	Key   string
+	Start int
+	End   int
+}
+
 func NewAcAutoMachine() *AcAutoMachine {
 	return &AcAutoMachine{
 		root: newAcNode(),
@@ -64,7 +70,7 @@ func (ac *AcAutoMachine) Build() {
 	}
 }
 
-func (ac *AcAutoMachine) Query(content string) (results []string) {
+func (ac *AcAutoMachine) Query(content string) (results []Result) {
 	chars := []rune(content)
 	iter := ac.root
 	var start, end int
@@ -80,7 +86,13 @@ func (ac *AcAutoMachine) Query(content string) (results []string) {
 			iter = iter.next[c]
 			if iter.isPattern {
 				end = i // this is the end match, record one result
-				results = append(results, string([]rune(content)[start:end+1]))
+				result := Result{
+					Key:   string([]rune(content)[start : end+1]),
+					Start: start,
+					End:   end + 1,
+				}
+				// results = append(results, string([]rune(content)[start:end+1]))
+				results = append(results, result)
 			}
 		}
 	}
