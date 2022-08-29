@@ -25,4 +25,10 @@ func TestAc(t *testing.T) {
 	for _, result := range results {
 		fmt.Println(result)
 	}
+
+	results = ac.QueryLast(content)
+	fmt.Println("=============")
+	for _, result := range results {
+		fmt.Println(result)
+	}
 }
