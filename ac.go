@@ -134,6 +134,7 @@ func (ac *AcAutoMachine) QueryLast(content string) (results []Result) {
 				}
 
 				lastResult = result
+				lastStart = start
 
 			}
 		}
@@ -145,7 +146,6 @@ func (ac *AcAutoMachine) QueryLast(content string) (results []Result) {
 			}
 		}
 
-		lastStart = start
 	}
 	return
 }
