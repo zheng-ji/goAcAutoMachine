@@ -124,13 +124,15 @@ func (ac *AcAutoMachine) QueryLast(content string) (results []Result) {
 					Start: start,
 					End:   end + 1,
 				}
-				lastResult = result
+				if (lastResult == Result{}) {
+					lastResult = result
+				}
 			}
 		}
 
 		// 结束或者lastStart变了
 		if i == len(chars)-1 || lastStart != start {
-			if (lastResult != Result{}) {
+			if (lastResult != Result{} && (lastResult.Start != start) || i == len(chars)-1) {
 				results = append(results, lastResult)
 				lastResult = Result{}
 			}
