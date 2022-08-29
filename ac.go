@@ -129,6 +129,7 @@ func (ac *AcAutoMachine) QueryLast(content string) (results []Result) {
 				if lastStart != start {
 					if (lastResult != Result{} && lastResult.Start != start) {
 						results = append(results, lastResult)
+						lastResult = Result{}
 					}
 				}
 
