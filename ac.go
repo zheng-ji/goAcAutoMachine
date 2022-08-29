@@ -73,7 +73,9 @@ func (ac *AcAutoMachine) Build() {
 func (ac *AcAutoMachine) Query(content string) (results []Result) {
 	chars := []rune(content)
 	iter := ac.root
-	var start, end int
+	var start, lastStart, end int
+	var lastResult Result // cant remove!!!
+	var result Result
 	for i, c := range chars {
 		_, ok := iter.next[c]
 		for !ok && iter != ac.root {
@@ -82,19 +84,28 @@ func (ac *AcAutoMachine) Query(content string) (results []Result) {
 		if _, ok = iter.next[c]; ok {
 			if iter == ac.root { // this is the first match, record the start position
 				start = i
+				result = Result{}
 			}
 			iter = iter.next[c]
 			if iter.isPattern {
 				end = i // this is the end match, record one result
-				result := Result{
+				result = Result{
 					Key:   string([]rune(content)[start : end+1]),
 					Start: start,
 					End:   end + 1,
 				}
-				// results = append(results, string([]rune(content)[start:end+1]))
-				results = append(results, result)
+				lastResult = result
 			}
 		}
+
+		// 结束或者lastStart变了
+		if i == len(chars)-1 || lastStart != start {
+			if (lastResult != Result{}) {
+				results = append(results, lastResult)
+			}
+		}
+
+		lastStart = start
 	}
 	return
 }
